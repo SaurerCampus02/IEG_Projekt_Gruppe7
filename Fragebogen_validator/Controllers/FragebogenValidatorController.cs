@@ -13,7 +13,7 @@ namespace Fragebogen_validator.Controllers
     public class FragebogenValidatorController : ControllerBase
     {
        [HttpGet]
-        public int Get([FromBody]Fragebogen[] frageboegen)
+        public List<KeyValuePair<int, double>> Get([FromBody]Fragebogen[] frageboegen)
         {
             List<Frage> alleFragen = new List<Frage>();
 
@@ -38,11 +38,12 @@ namespace Fragebogen_validator.Controllers
                     sum += singleFrage.Antwort;
                 }
 
+                int length = alleFragen.FindAll(f => f.FragenId == groupedFrage.Key).Count;
 
-               // validatedFragen.Add(new KeyValuePair<int, double>(groupedFrage.Key, sum / groupedFrage.Count);
+               validatedFragen.Add(new KeyValuePair<int, double>(groupedFrage.Key, sum / length));
 
             }
-            return 0;
+            return validatedFragen;
         }
     }
 }
