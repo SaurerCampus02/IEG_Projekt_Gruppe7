@@ -11,6 +11,8 @@ namespace Fragebogen_creator.Repository
         private static List<Fragebogen> _fragebogen = new List<Fragebogen>();
         public FragebogenRepository()
         {
+            _fragebogen.Clear();
+
             Frage frage1 = new Frage();
             frage1.FragenId = 2;
             frage1.FrageText = "Warum Sie mit der Dauer der Lieferung zufrieden?";

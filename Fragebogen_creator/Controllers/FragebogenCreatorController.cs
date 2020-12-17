@@ -14,7 +14,6 @@ namespace Fragebogen_creator.Controllers
     public class FragebogenCreatorController : ControllerBase
     {
         FragebogenRepository _fragebogenRepository = new FragebogenRepository();
-
         [HttpGet]
         public IEnumerable<Fragebogen> Get()
         {

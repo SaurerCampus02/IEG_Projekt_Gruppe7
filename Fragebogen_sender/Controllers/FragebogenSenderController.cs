@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Polly;
+using Fragebogen_creator.Models;
 
 namespace Fragebogen_sender.Controllers
 {
@@ -17,8 +18,8 @@ namespace Fragebogen_sender.Controllers
         private readonly ILogger<FragebogenSenderController> _logger;
         private static readonly string[] creditcardServiceBaseAddresses = new string[]
             { "https://fragebogencreatornr1.azurewebsites.net" ,
-                "https://fragebogencreatornr1.azurewebsites.net",
-            "https://fragebogencreatornr1.azurewebsites.net"};
+                "https://fragebogencreatornr2.azurewebsites.net",
+            "https://fragebogencreatornr3.azurewebsites.net"};
 
 
         public FragebogenSenderController(ILogger<FragebogenSenderController> logger)
@@ -26,9 +27,9 @@ namespace Fragebogen_sender.Controllers
             _logger = logger;
         }
         [HttpGet]
-        public async Task<IEnumerable<string>> GetAsync()
+        public async Task<IEnumerable<Fragebogen>> GetAsync()
         {
-            List<string> acceptedPaymentMethods = null;
+            List<Fragebogen> fragebogen = null;
             _logger.LogError("Accepted Paymentmethods");
 
             foreach (string creditcardServiceBaseAddresses in creditcardServiceBaseAddresses)
@@ -52,7 +53,7 @@ namespace Fragebogen_sender.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    acceptedPaymentMethods = await response.Content.ReadAsAsync<List<string>>();
+                    fragebogen = await response.Content.ReadAsAsync<List<Fragebogen>>();
                     _logger.LogInformation("Response was successful.");
                     break;
                 }
@@ -62,7 +63,7 @@ namespace Fragebogen_sender.Controllers
                 }
             }
 
-            return acceptedPaymentMethods;
+            return fragebogen;
         }
     }
 }
