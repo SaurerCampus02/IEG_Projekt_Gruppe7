@@ -8,6 +8,41 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fragebogen_validator.Controllers
 {
+    //Fragebogen JSON zum Testen
+//    [
+//   {
+//      "fragebogenId":0,
+//      "fragen":[
+//         {
+//            "fragenId":2,
+//            "frageText":"Warum Sie mit der Dauer der Lieferung zufrieden?",
+//            "antwort":3
+//         },
+//         {
+//            "fragenId":1,
+//            "frageText":"Warum Sie mit der Qualität des Produktes zufrieden?",
+//            "antwort":4
+//         }
+//      ]
+//   },
+//   {
+//      "fragebogenId":1,
+//      "fragen":[
+//         {
+//            "fragenId":2,
+//            "frageText":"Warum Sie mit der Dauer der Lieferung zufrieden?",
+//            "antwort":4
+//         },
+//         {
+//            "fragenId":1,
+//            "frageText":"Warum Sie mit der Qualität des Produktes zufrieden?",
+//            "antwort":5
+//         }
+//      ]
+//   }
+//]
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class FragebogenValidatorController : ControllerBase
