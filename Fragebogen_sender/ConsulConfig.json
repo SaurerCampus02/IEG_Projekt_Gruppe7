@@ -1,0 +1,43 @@
+{
+  "services": [
+    {
+      "name": "Service1",
+      "Address": "https://fragebogencreatornr1.azurewebsites.net",
+      "tags": [ "Fragebogen" ],
+      "port": 44394,
+      "check": {
+        "id": "HealthCheckCreditCardService",
+        "name": "HTTP API on port 5000",
+        "http": "http://localhost:44394/api/Healthcheck",
+        "interval": "10s",
+        "timeout": "1s"
+      }
+    },
+    {
+      "name": "Service2",
+      "Address": "https://fragebogencreatornr2.azurewebsites.net",
+      "tags": [ "Fragebogen" ],
+      "port": 44394,
+      "check": {
+        "id": "HealthCheckCreditCardService",
+        "name": "HTTP API on port 5000",
+        "http": "http://localhost:44394/api/Healthcheck",
+        "interval": "10s",
+        "timeout": "1s"
+      }
+    },
+    {
+      "name": "Service3",
+      "Address": "https://fragebogencreatornr3.azurewebsites.net",
+      "tags": [ "Fragebogen" ],
+      "port": 44394,
+      "check": {
+        "id": "HealthCheckCreditCardService",
+        "name": "HTTP API on port 5000",
+        "http": "http://localhost:44394/api/Healthcheck",
+        "interval": "10s",
+        "timeout": "1s"
+      }
+    }
+  ]
+}

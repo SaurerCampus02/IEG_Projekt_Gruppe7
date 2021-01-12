@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Polly;
 using Fragebogen_creator.Models;
+using System.Linq;
+using Consul;
 
 namespace Fragebogen_sender.Controllers
 {
@@ -32,23 +34,26 @@ namespace Fragebogen_sender.Controllers
             List<Fragebogen> fragebogen = null;
             _logger.LogError("Accepted Paymentmethods");
 
-            foreach (string creditcardServiceBaseAddresses in creditcardServiceBaseAddresses)
+            for (int i = 0; i < 10; i++)
             {
+                string uri = GetURIFromConsul().ToString();
+
+
                 HttpClient httpClient = new HttpClient();
-                httpClient.BaseAddress = new Uri(creditcardServiceBaseAddresses);
+                httpClient.BaseAddress = new Uri(uri);
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = await Policy
+                var response = await Polly.Policy
                .HandleResult<HttpResponseMessage>(message => !message.IsSuccessStatusCode)
                .WaitAndRetryAsync(3, i => TimeSpan.FromSeconds(2), (result, timeSpan, retryCount, context) =>
                {
                    _logger.LogWarning($"Request failed with {result.Result.StatusCode}. Waiting {timeSpan} before next retry. Retry attempt {retryCount}");
-                   _logger.LogWarning($"URL: {creditcardServiceBaseAddresses}/api/fragebogencreator");
+                   _logger.LogWarning($"URL: {uri}/api/fragebogencreator");
                })
                .ExecuteAsync(() =>
                {
-                   return httpClient.GetAsync(creditcardServiceBaseAddresses + "/api/fragebogencreator");
+                   return httpClient.GetAsync(uri + "/api/fragebogencreator");
                });
 
                 if (response.IsSuccessStatusCode)
@@ -62,8 +67,35 @@ namespace Fragebogen_sender.Controllers
                     _logger.LogError($"Response failed. Status code {response.StatusCode}");
                 }
             }
-
+       
             return fragebogen;
+        }
+
+        private Uri GetURIFromConsul()
+        {
+
+            List<Uri> _serverUrls = new List<Uri>();
+            var consuleClient = new ConsulClient(c => c.Address = new Uri("http://127.0.0.1:8500"));
+            var services = consuleClient.Agent.Services().Result.Response;
+            foreach (var service in services)
+            {
+                var isCreditCardApi = service.Value.Tags.Any(t => t == "Fragebogen");
+                if (isCreditCardApi)
+                {
+                    try
+                    {
+                        var serviceUri = new Uri($"{service.Value.Address}");
+                        _serverUrls.Add(serviceUri);
+                    }
+                    catch (Exception)
+                    {
+
+                        ;
+                    }
+
+                }
+            }
+            return _serverUrls.FirstOrDefault();
         }
     }
 }
