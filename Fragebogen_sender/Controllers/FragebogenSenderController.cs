@@ -16,7 +16,6 @@ namespace Fragebogen_sender.Controllers
     [ApiController]
     public class FragebogenSenderController : ControllerBase
     {
-        //https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
         private readonly ILogger<FragebogenSenderController> _logger;
      
 

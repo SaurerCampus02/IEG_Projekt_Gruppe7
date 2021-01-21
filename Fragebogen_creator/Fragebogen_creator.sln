@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fragebogen_creator", "Fragebogen_creator.csproj", "{FD2E0BE0-5633-40B6-9A07-EC2FAB5AEFED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fragebogen_creator", "Fragebogen_creator.csproj", "{FD2E0BE0-5633-40B6-9A07-EC2FAB5AEFED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fragebogen_sender", "..\Fragebogen_sender\Fragebogen_sender.csproj", "{DA59886E-B19A-4D77-8335-631E329AA8CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fragebogen_sender", "..\Fragebogen_sender\Fragebogen_sender.csproj", "{DA59886E-B19A-4D77-8335-631E329AA8CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fragebogen_validator", "..\Fragebogen_validator\Fragebogen_validator.csproj", "{3E828BC7-D452-4701-8E51-E777CB33A13C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fragebogen_validator", "..\Fragebogen_validator\Fragebogen_validator.csproj", "{3E828BC7-D452-4701-8E51-E777CB33A13C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigManager", "..\ConfigManager\ConfigManager.csproj", "{F36FD5E6-BC63-4196-BF0B-5FADCBB5EE5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{3E828BC7-D452-4701-8E51-E777CB33A13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E828BC7-D452-4701-8E51-E777CB33A13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E828BC7-D452-4701-8E51-E777CB33A13C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F36FD5E6-BC63-4196-BF0B-5FADCBB5EE5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F36FD5E6-BC63-4196-BF0B-5FADCBB5EE5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F36FD5E6-BC63-4196-BF0B-5FADCBB5EE5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F36FD5E6-BC63-4196-BF0B-5FADCBB5EE5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
