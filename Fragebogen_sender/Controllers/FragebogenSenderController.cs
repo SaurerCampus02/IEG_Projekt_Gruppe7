@@ -18,11 +18,7 @@ namespace Fragebogen_sender.Controllers
     {
         //https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
         private readonly ILogger<FragebogenSenderController> _logger;
-        private static readonly string[] creditcardServiceBaseAddresses = new string[]
-            { "https://fragebogencreatornr1.azurewebsites.net" ,
-                "https://fragebogencreatornr2.azurewebsites.net",
-            "https://fragebogencreatornr3.azurewebsites.net"};
-
+     
 
         public FragebogenSenderController(ILogger<FragebogenSenderController> logger)
         {
