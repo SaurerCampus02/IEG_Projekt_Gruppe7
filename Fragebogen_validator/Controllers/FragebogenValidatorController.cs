@@ -10,13 +10,13 @@ namespace Fragebogen_validator.Controllers
 {
     //Fragebogen JSON zum Testen
 //    [
-//   {
+//     {
 //      "fragebogenId":0,
-//      "fragen":[
-//         {
+//        "fragen":[
+//           {
 //            "fragenId":2,
-//            "frageText":"Warum Sie mit der Dauer der Lieferung zufrieden?",
-//            "antwort":3
+//              "frageText":"Warum Sie mit der Dauer der Lieferung zufrieden?",
+//              "antwort":3
 //         },
 //         {
 //            "fragenId":1,

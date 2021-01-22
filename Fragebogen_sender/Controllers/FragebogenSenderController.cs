@@ -42,7 +42,8 @@ namespace Fragebogen_sender.Controllers
                .HandleResult<HttpResponseMessage>(message => !message.IsSuccessStatusCode)
                .WaitAndRetryAsync(3, i => TimeSpan.FromSeconds(2), (result, timeSpan, retryCount, context) =>
                {
-                   _logger.LogWarning($"Request failed with {result.Result.StatusCode}. Waiting {timeSpan} before next retry. Retry attempt {retryCount}");
+                   _logger.LogWarning($"Request failed with {result.Result.StatusCode}. " +
+                       $"Waiting {timeSpan} before next retry. Retry attempt {retryCount}");
                    _logger.LogWarning($"URL: {uri}/api/fragebogencreator");
                })
                .ExecuteAsync(() =>
@@ -70,7 +71,6 @@ namespace Fragebogen_sender.Controllers
             List<Uri> _serverUrls = new List<Uri>();
 
             HttpClient httpClient = new HttpClient();
-            //httpClient.BaseAddress = new Uri(uri);
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
