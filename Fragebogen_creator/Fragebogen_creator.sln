@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fragebogen_validator", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigManager", "..\ConfigManager\ConfigManager.csproj", "{F36FD5E6-BC63-4196-BF0B-5FADCBB5EE5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHookService", "..\WebHookService\WebHookService.csproj", "{4B6FDE35-D512-4160-AF1A-25B80192BF0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F36FD5E6-BC63-4196-BF0B-5FADCBB5EE5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F36FD5E6-BC63-4196-BF0B-5FADCBB5EE5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F36FD5E6-BC63-4196-BF0B-5FADCBB5EE5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B6FDE35-D512-4160-AF1A-25B80192BF0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B6FDE35-D512-4160-AF1A-25B80192BF0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B6FDE35-D512-4160-AF1A-25B80192BF0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B6FDE35-D512-4160-AF1A-25B80192BF0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

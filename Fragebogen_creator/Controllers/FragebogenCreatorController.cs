@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Fragebogen_creator.Models;
 using Fragebogen_creator.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fragebogen_creator.Controllers
@@ -13,7 +12,10 @@ namespace Fragebogen_creator.Controllers
     [ApiController]
     public class FragebogenCreatorController : ControllerBase
     {
+        private String webHookUrl = "http://localhost:1234";
+
         FragebogenRepository _fragebogenRepository = new FragebogenRepository();
+
         [HttpGet]
         public IEnumerable<Fragebogen> Get()
         {
@@ -27,7 +29,7 @@ namespace Fragebogen_creator.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Fragebogen fragebogen)
+        public IActionResult Post([FromBody] Fragebogen fragebogen)
         {
             if (ModelState.IsValid == false)
             {
@@ -36,7 +38,14 @@ namespace Fragebogen_creator.Controllers
             else
             {
                 _fragebogenRepository.Add(fragebogen);
-                return CreatedAtAction("Get", new { id = fragebogen.FragebogenId });
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(webHookUrl);
+                client.DefaultRequestHeaders.Accept.Clear();
+                HttpResponseMessage response =
+                    client.PostAsync(webHookUrl + "/api/WebHook/SendMail", new StringContent("")).Result;
+                response.EnsureSuccessStatusCode();
+
+                return CreatedAtAction("Get", new {id = fragebogen.FragebogenId});
             }
         }
 
