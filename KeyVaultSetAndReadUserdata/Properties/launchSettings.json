@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:52678",
+      "sslPort": 44307
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VaultUri": "https://keyvaultserviceapi.azurewebsites.net",
+        "AZURE_USERNAME": "dominik.stoeckl@edu.campus02.at",
+        "IEGKeyVaultService": "https://iegkeyvaultservice.vault.azure.net/"
+      }
+    },
+    "KeyVaultService": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VaultUri": "https://keyvaultserviceapi.azurewebsites.net",
+        "AZURE_USERNAME": "dominik.stoeckl@edu.campus02.at",
+        "IEGKeyVaultService": "https://iegkeyvaultservice.vault.azure.net/"
+      }
+    }
+  }
+}
